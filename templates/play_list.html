@@ -1,0 +1,459 @@
+{% extends "menu.html" %}
+{% block link %}
+    <link rel="stylesheet" href="../static/css/play_list.css">
+    <title>Play List</title>
+{% endblock %}
+{% block body %}
+    <div class="box2">
+        <div class="box2__item1">
+            <div class="box2__item1__time1">
+                <div class="list1">
+                    <div class="list1_item1">
+                        <p class="music_name">Music name</p>
+                        <p class="music_singer">Singer name</p>
+                        <p class="music_data">Music Data</p>
+                        <p class="play_list_text">Play List</p>
+                    </div>
+                    <div class="list1_item2">
+                        <a class="button1" href="#">Play online</a>
+                        <a class="button2" href="">Download</a>
+                    </div>
+                    <div class="list1_item3">
+                        <img src="https://news.store.rambler.ru/img/3fdd61fb617943315dde910101cbfa52?img-format=auto&img-1-resize=height:355,fit:max&img-2-filter=sharpen"
+                             alt="">
+                    </div>
+                </div>
+
+            </div>
+            <div class="box2__item1__time2">
+                <div class="list4">
+                    {% for play_list_one in play_list_mor %}
+                        <div class="box" data-id="{{ play_list_one.id }}">
+                            <div class="box_item1"><img src="../static/icons/playstation%204.png" alt=""></div>
+                            <div class="box_item2">
+                                <img src="../static/icons/Polygon%204.png" alt="">
+                                <p>{{ play_list_one.name }}</p>
+                            </div>
+                            <div class="box_item3">
+                                <p>Music: 3</p>
+                                <i class="fa-solid fa-trash music_del_button" data-id="{{ play_list_one.id }}"
+                                   style="color: #860093;"></i>
+                            </div>
+                            <div class="box_item4"><p>Singer: 2</p></div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="list5">
+                    <div class="list5_item">
+                        <p>+</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box2__item2" data-id="{{ singer_id }}">
+            <div class="box2__item2__time1">
+                <p class="category" data-id="0">All</p>
+                {% for category in category_mor %}
+                    <p class="category" data-id="{{ category.id }}">{{ category.name }}</p>
+                {% endfor %}
+                {#                <p>Popular Musics</p>#}
+                {#                <p>New musics</p>#}
+                {#                <p>Expedito, odit?</p>#}
+                {#                <p>Optio, vitae</p>#}
+                {#                <p>In, perferendis</p>#}
+            </div>
+            <div class="box2__item2__time2 music_list_one">
+                {% for music in musics %}
+                    <div class="music" data-id="{{ music.music.id }}">
+                        <div class="music__item1">
+                            <div class="music__item1__time">
+                                <img class="music_icon" src="../static/icons/Polygon%202.png" alt="">
+                                <audio src="{{ music.music.url }}"></audio>
+                            </div>
+                        </div>
+                        <div class="music__item2">
+                            <img class="music_img"
+                                 src="{{ music.music.singer.img }}"
+                                 alt="">
+                        </div>
+                        <div class="music__item3">
+                            {#                            <a href="#" class="music_singer_name">{{ music.singer.name }}</a>#}
+                            <p class="text">{{ music.music.name[0:10] }} ...</p>
+                        </div>
+                        <div class="music__item4" data-id="{{ music.music.date.strftime("%Y-%m-%d") }}">
+                            <p>3:00</p>
+                        </div>
+                        <div class="music__item5">
+                            <p>325.4 kb/s</p>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="plus">+</div>
+            </div>
+        </div>
+        <div class="play_list_add">
+            <div class="play_list_item1">
+                <div class="box2__item1">
+                    <div class="box2__item1__time1_new">
+                        <div class="list6">
+                            <p>Category</p>
+                        </div>
+                        <div class="list7">
+                            {#                        {% for category in category_mor %}#}
+                            {#                            <div class="category_box">#}
+                            {#                                <p class="category" data-id="{{ category.id }}">{{ category.name }}</p>#}
+                            {#                            </div>#}
+                            {#                        {% endfor %}                        #}
+                            <div class="category_box">
+                                <p class="category" data-id="">Popular Musics</p>
+                            </div>
+                            <div class="category_box">
+                                <p class="category" data-id="">Expedito, odit?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box2__item1__time2_new">
+                        <div class="list8">
+                            <p>Singers</p>
+                        </div>
+                        <div class="list9">
+                            <div class="singer">
+                                <div class="singer_item1">
+                                    <img src="../static/singer_img/photo_2023-01-09_15-22-36.jpg" alt="">
+                                </div>
+                                <div class="singer_item2">
+                                    <p>Singer name</p>
+                                </div>
+                                <div class="singer_item3">
+                                    <p>Music: 3</p>
+                                </div>
+                                <div class="singer_item3">
+                                    <p>Album: 2</p>
+                                </div>
+                            </div>
+                            <div class="singer">
+                                <div class="singer_item1">
+                                    <img src="../static/singer_img/photo_2023-01-09_15-22-36.jpg" alt="">
+                                </div>
+                                <div class="singer_item2">
+                                    <p>Singer name</p>
+                                </div>
+                                <div class="singer_item3">
+                                    <p>Music: 3</p>
+                                </div>
+                                <div class="singer_item3">
+                                    <p>Album: 2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box2__item2" data-id="{{ singer_id }}">
+                    <div class="box2__item2__time1">
+                        <p>Music</p>
+                    </div>
+                    <div class="box2__item2__time2 music_list_two">
+                        {% for music in musics %}
+                            <div class="music" data-id="{{ music.music.id }}">
+                                <div class="music__item1">
+                                    <div class="music__item1__time">
+                                        <img class="music_icon" src="../static/icons/Polygon%202.png" alt="">
+                                        <audio src="{{ music.music.url }}"></audio>
+                                    </div>
+                                </div>
+                                <div class="music__item2">
+                                    <img class="music_img"
+                                         src="{{ music.music.singer.img }}"
+                                         alt="">
+                                </div>
+                                <div class="music__item3">
+                                    {#                            <a href="#" class="music_singer_name">{{ music.singer.name }}</a>#}
+                                    <p class="text">{{ music.music.name[0:10] }} ...</p>
+                                </div>
+                                <div class="music__item4" data-id="{{ music.music.date.strftime("%Y-%m-%d") }}">
+                                    <p>3:00</p>
+                                </div>
+                                <div class="music__item5">
+                                    <p>325.4 kb/s</p>
+                                </div>
+                                <div class="music__item6">
+                                    <img data-id="{{ music.music.id }}" src="../static/icons/Rectangle%2062.png" alt="">
+                                </div>
+                            </div>
+
+                        {% endfor %}
+                    </div>
+                    <div class="box2__item2__time3">
+                        <button>Naming</button>
+                    </div>
+                </div>
+            </div>
+            <div class="play_list_item2">
+                <div class="naming_item1">
+                    <div class="naming1_div1">
+                        <p>Play list</p>
+                    </div>
+                    <div class="naming1_div2">
+                        <div class="play__list">
+                            <div class="play_list__item1">
+                                <img src="../static/icons/playstation%204.png" alt="">
+                            </div>
+                            <div class="play_list__item2">
+                                <p>Play list name</p>
+                            </div>
+                            <div class="play_list__item3">
+                                <p>Music: 3</p>
+                            </div>
+                            <div class="play_list__item3">
+                                <p>Singer: 2</p>
+                            </div>
+                        </div>
+                        <div class="play__list">
+                            <div class="play_list__item1">
+                                <img src="../static/icons/playstation%204.png" alt="">
+                            </div>
+                            <div class="play_list__item2">
+                                <p>Play list name</p>
+                            </div>
+                            <div class="play_list__item3">
+                                <p>Music: 3</p>
+                            </div>
+                            <div class="play_list__item3">
+                                <p>Singer: 2</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="naming_item2">
+                    <div class="naming2_div1">
+                        <p>Play List Naming</p>
+                    </div>
+                    <div class="naming2_div2">
+                        <div class="naming2_div2_item">
+                            <p>Enter the name</p>
+                            <input type="text" placeholder="Play list name">
+                        </div>
+                    </div>
+                    <div class="naming2_div3">
+                        <button>Crate Play list</button>
+                    </div>
+                </div>
+            </div>
+            <div class="play_list_item3 ">
+                <div class="box2__item1">
+                    <div class="box2__item1__time1_new">
+                        <div class="list6">
+                            <p>Category</p>
+                        </div>
+                        <div class="list7">
+                            {#                        {% for category in category_mor %}#}
+                            {#                            <div class="category_box">#}
+                            {#                                <p class="category" data-id="{{ category.id }}">{{ category.name }}</p>#}
+                            {#                            </div>#}
+                            {#                        {% endfor %}                        #}
+                            <div class="category_box">
+                                <p class="category" data-id="">Popular Musics</p>
+                            </div>
+                            <div class="category_box">
+                                <p class="category" data-id="">Expedito, odit?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box2__item1__time2_new">
+                        <div class="list8">
+                            <p>Singers</p>
+                        </div>
+                        <div class="list9">
+                            <div class="singer">
+                                <div class="singer_item1">
+                                    <img src="../static/singer_img/photo_2023-01-09_15-22-36.jpg" alt="">
+                                </div>
+                                <div class="singer_item2">
+                                    <p>Singer name</p>
+                                </div>
+                                <div class="singer_item3">
+                                    <p>Music: 3</p>
+                                </div>
+                                <div class="singer_item3">
+                                    <p>Album: 2</p>
+                                </div>
+                            </div>
+                            <div class="singer">
+                                <div class="singer_item1">
+                                    <img src="../static/singer_img/photo_2023-01-09_15-22-36.jpg" alt="">
+                                </div>
+                                <div class="singer_item2">
+                                    <p>Singer name</p>
+                                </div>
+                                <div class="singer_item3">
+                                    <p>Music: 3</p>
+                                </div>
+                                <div class="singer_item3">
+                                    <p>Album: 2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box2__item2" data-id="{{ singer_id }}">
+                    <div class="box2__item2__time1">
+                        <p>Music</p>
+                    </div>
+                    <div class="box2__item2__time2 music_list_del">
+                        <h1>Music 404</h1>
+                    </div>
+                    <div class="new_box2__item2__time3">
+                        <button class="save_button">Save</button>
+                    </div>
+                </div>
+            </div>
+            <div class="play_list_item4 ">
+                <div class="box2__item1">
+                    <div class="box2__item1__time1_new">
+                        <div class="list6">
+                            <p>Category</p>
+                        </div>
+                        <div class="list7">
+                                                    {% for category in category_mor %}
+                                                        <div class="category_box">
+                                                            <p class="category" data-id="{{ category.id }}">{{ category.name }}</p>
+                                                        </div>
+                                                    {% endfor %}
+                            <div class="category_box">
+                                <p class="category" data-id="">Popular Musics</p>
+                            </div>
+                            <div class="category_box">
+                                <p class="category" data-id="">Expedito, odit?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box2__item1__time2_new">
+                        <div class="list8">
+                            <p>Singers</p>
+                        </div>
+                        <div class="list9">
+                            <div class="singer">
+                                <div class="singer_item1">
+                                    <img src="../static/singer_img/photo_2023-01-09_15-22-36.jpg" alt="">
+                                </div>
+                                <div class="singer_item2">
+                                    <p>Singer name</p>
+                                </div>
+                                <div class="singer_item3">
+                                    <p>Music: 3</p>
+                                </div>
+                                <div class="singer_item3">
+                                    <p>Album: 2</p>
+                                </div>
+                            </div>
+                            <div class="singer">
+                                <div class="singer_item1">
+                                    <img src="../static/singer_img/photo_2023-01-09_15-22-36.jpg" alt="">
+                                </div>
+                                <div class="singer_item2">
+                                    <p>Singer name</p>
+                                </div>
+                                <div class="singer_item3">
+                                    <p>Music: 3</p>
+                                </div>
+                                <div class="singer_item3">
+                                    <p>Album: 2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box2__item2" data-id="{{ singer_id }}">
+                    <div class="box2__item2__time1">
+                        <p>Music</p>
+                    </div>
+                    <div class="box2__item2__time2 music_list_three">
+{#                        {% for music in musics %}#}
+{#                            <div class="music" data-id="{{ music.music.id }}">#}
+{#                                <div class="music__item1">#}
+{#                                    <div class="music__item1__time">#}
+{#                                        <img class="music_icon" src="../static/icons/Polygon%202.png" alt="">#}
+{#                                        <audio src="{{ music.music.url }}"></audio>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="music__item2">#}
+{#                                    <img class="music_img"#}
+{#                                         src="{{ music.music.singer.img }}"#}
+{#                                         alt="">#}
+{#                                </div>#}
+{#                                <div class="music__item3">#}
+{#                                                                <a href="#" class="music_singer_name">{{ music.singer.name }}</a>#}
+{#                                    <p class="text">{{ music.music.name[0:10] }} ...</p>#}
+{#                                </div>#}
+{#                                <div class="music__item4" data-id="{{ music.music.date.strftime("%Y-%m-%d") }}">#}
+{#                                    <p>3:00</p>#}
+{#                                </div>#}
+{#                                <div class="music__item5">#}
+{#                                    <p>325.4 kb/s</p>#}
+{#                                </div>#}
+{#                                <div class="music__item6">#}
+{#                                    <img class="music_select_button" data-id="{{ music.music.id }}" src="../static/icons/Rectangle%2062.png" alt="">#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                        {% endfor %}#}
+                    </div>
+                    <div class="box2__item2__time3">
+                        <button class="upgrade">Upgrade</button>
+                    </div>
+                </div>
+            </div>
+            <div class="play_list_add_button">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="play_list_add_button_two">
+                <i class="fa-solid fa-angles-right"></i>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block music_pleyer %}
+    <div class="box3__item1">
+        <div class="box3__item1_time1">
+            <img class="icon1" src="../static/icons/left.png" alt="">
+        </div>
+        <div class="box3__item1_time2">
+            <img class="icon2 icon" src="../static/icons/button%201.png" alt="">
+            <audio data-id="1" src="" id="music"></audio>
+        </div>
+        <div class="box3__item1_time3">
+            <img class="icon4" src="../static/icons/right.png" alt="">
+        </div>
+    </div>
+    <div class="box3__item2">
+        <div class="box3__item2__time1">
+            <div class="box3__item2__time1__box1">
+                <p class="music_name2"></p>
+            </div>
+            <div class="box3__item2__time1__box2">
+                <small class="fullTime">0:00</small>
+            </div>
+        </div>
+        <div class="box3__item2__time2">
+            <div class="box3__item2__time2__box">
+                <div class="box3__item2__time2__box__item"></div>
+            </div>
+        </div>
+    </div>
+    <div class="box3__item3">
+        <i class="fa-solid fa-rotate-right icon5"></i>
+                <i class="fa-solid fa-star favorites"></i>
+        <i class="fa-solid fa-star favorites" style="color: #860093;"></i>
+    </div>
+    <div class="box3__item4">
+        <div class="box3__item4__item">
+            <i id="icon_value" class="fa-solid fa-volume-high " style="color: #ffffff;"></i>
+            <input type="range" min="0" max="100" value="100" id="range">
+            <p class="text"><span id="value"></span></p>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+    <script src="../static/java/play_list.js"></script>
+{% endblock %}

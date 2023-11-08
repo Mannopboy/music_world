@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/css/register.css">
+    <title>Music World</title>
+</head>
+<body>
+<div class="menu">
+    <div class="box_father">
+        <div class="box">
+            <div class="box__item1">
+                <div class="box__item_button">
+                    <div class="button_one">
+                        <p>Login</p>
+                    </div>
+                    <div class="button_two">
+                        <p>Register</p>
+                    </div>
+                </div>
+            </div>
+            <div class="box__item2">
+                <form class="box__item2_form1" action="{{ url_for('login') }}" method="post" enctype="multipart/form-data">
+                    <div class="form__box1">
+                        <p>Name or Gmail</p>
+                        <input name="name" type="text">
+                    </div>
+                    <div class="form__box1">
+                        <p>Password</p>
+                        <input name="password" type="password">
+                    </div>
+                    <div class="form__box2">
+                        <button>Login</button>
+                    </div>
+                </form>
+                <form class="box__item2_form2" action="{{ url_for('register') }}" method="post" enctype="multipart/form-data">
+                    <div class="form__box3">
+                        <p>Name</p>
+                        <input name="name" type="text">
+                    </div>
+                    <div class="form__box3">
+                        <p>Gmail</p>
+                        <input name="gmail" type="text">
+                    </div>
+                    <div class="form__box3">
+                        <p>Password</p>
+                        <input name="password" type="password">
+                    </div>
+                    <div class="form__box3">
+                        <button>Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+<script src="../static/java/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% extends 'menu.html' %}
+{% block link %}
+    <link rel="stylesheet" href="../static/css/home.css">
+    <title>Music World</title>
+{% endblock %}
+{% block body %}
+    <div class="box2">
+        <div class="box2__item1">
+            <div class="box2__item1__time1">
+                <p>Lotest musics</p>
+                <img src="../static/icons/vektor123.png" alt="">
+            </div>
+            <div class="box2__item1__time1">
+                <p>Lotest musics</p>
+                <img src="../static/icons/vektor123.png" alt="">
+            </div>
+        </div>
+        <div class="box2__item2">
+            {% for singer in singers %}
+                <a href="{{ url_for("music",singer_id=singer.id) }}" class="box">
+                    <img src="{{ singer.img }}" alt="">
+                    <div class="box__item">
+                        <div class="box__item__tim1">
+                            <p>{{ singer.name }}</p>
+                            <p>Album: {{ singer.album|length }}</p>
+                            <p>Music: {{ singer.music|length }}</p>
+                        </div>
+                        <div class="box__item__tim2">
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+
+{% endblock %}

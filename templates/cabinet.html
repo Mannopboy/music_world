@@ -1,0 +1,131 @@
+{% extends 'menu.html' %}
+{% block link %}
+    <link rel="stylesheet" href="../static/css/cabinet.css">
+    <title>Music World</title>
+{% endblock %}
+{% block body %}
+    <div class="box2">
+        <div class="box2__item">
+            <div class="box2__item__time1">
+                <div class="box31">
+                    <div class="box31__item1" id="button1">
+                        <p>Singer</p>
+                    </div>
+                    <div class="box31__item1" id="button2">
+                        <p>Category</p>
+                    </div>
+                    <div class="box31__item1" id="button3">
+                        <p>Genre</p>
+                    </div>
+                </div>
+                <div class="carousel">
+                    <div class="box41" id="carousel_item1">
+                        <div class="carousel_item1_time1">
+                            <div class="singer_add">
+                                {% for singer in singers %}
+                                    <div data-singer_id="{{ singer.id }}" class="button5 i button5_3">
+                                        <p>{{ singer.name }}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="button5_father__item">
+                                <div class="button5_father__item_time">
+
+                                </div>
+                                <div class="button6" id="button4">
+                                    <p class="button_text">+</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel_item1_time2">
+                            <div class="button5 button1 button6 singer_button_1" id="box__item1 ">
+                                <p class="button_text ">+</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box41" id="carousel_item2">
+                        <div class="carousel_item2_time1">
+                            {% for categor in category %}
+                                <div class="button5 i button5_1">
+                                    <p>{{ categor.name }}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="carousel_item2_time2">
+                            <div class="button5 button2 button6" id="box__item1 ">
+                                <p class="button_text">+</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box41" id="carousel_item3">
+                        <div class="carousel_item3_time1">
+                            {% for genre in genres %}
+                                <div class="button5 i button5_2">
+                                    <p>{{ genre.name }}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="carousel_item3_time2">
+                            <div class="button5 button3 button6" id="box__item1 ">
+                                <p class="button_text">+</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box2__item__time2">
+                <div class="register">
+                    <div class="register_4__item">
+                        <p>Register Album</p>
+                        <input class="register_album" type="text" placeholder="Enter Genre">
+                        <button>Send</button>
+                    </div>
+                </div>
+                <div class="register">
+                    <div class="register_1__item">
+                        <p>Register Singer</p>
+                        <input type="text" placeholder="Enter singer name" class="input_singer">
+                        <input type="file" class="custom-file-input" accept="image/png, image/jpeg">
+                        <button>Send</button>
+                    </div>
+                </div>
+                <div class="register">
+                    <div class="register_2__item">
+                        <p>Register Category</p>
+                        <input type="text" placeholder="Enter Category">
+                        <button>Send</button>
+                    </div>
+                </div>
+                <div class="register">
+                    <div class="register_3__item">
+                        <p>Register Genre</p>
+                        <input type="text" placeholder="Enter Genre">
+                        <button>Send</button>
+                    </div>
+                </div>
+                <div class="register_music">
+                    <div class="register1">
+                        <img src="../static/icon/file-audio.svg" alt="">
+                    </div>
+                    <form action="{{ url_for('register_music') }}" method="post" enctype="multipart/form-data"
+                          class="register2">
+                        <input name="music" type="file" hidden id="input" accept=".mp3, .wav">
+                        <input type="file" name="input_img" hidden id="input_img">
+                        <div id="cover"></div>
+                        <input name="title" id="title" type="text">
+                        <input name="artist" id="artist" type="text">
+                        <input name="album" id="album" type="text">
+                        <input name="genre" id="genre" type="text">
+                        <input name="category" id="category" type="text">
+                        <button>Register Music</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+    <script src="../static/java/cabinet.js"></script>
+{% endblock %}
